@@ -18,6 +18,7 @@ public class SimplePath: MonoBehaviour {
         _start = _target.position;
         _end = _points[0];
         _index = 0;
+        _target.LookAt(_end);
     }
 
     private void Update() {
@@ -27,6 +28,7 @@ public class SimplePath: MonoBehaviour {
         
         _progress += Time.deltaTime * _speed;
         _target.position = Vector3.Lerp(_start, _end, _progress / Vector3.Distance(_start, _end));
+        _target.LookAt(_end);
 
         if (Vector3.Distance(_target.position, _end) < 0.1f) {
             _start = _end;
